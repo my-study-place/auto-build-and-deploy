@@ -9,8 +9,12 @@ public class Command implements CommandExecutor {
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (sender instanceof Player){
             Player player = (Player) sender;
-            player.sendMessage("test");
-            player.giveExp(1000);
+            if (label.equalsIgnoreCase("o")){
+                player.sendMessage("O");
+            }
+            else if (label.equalsIgnoreCase("x")){
+                player.sendMessage("X");
+            }
         }
         return false;
     }

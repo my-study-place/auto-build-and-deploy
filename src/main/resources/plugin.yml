@@ -2,6 +2,8 @@ name: Study
 version: ${project.version}
 main: me.saidbysolo.study.Study
 commands:
-  test:
-    description: test
+  O:
+    description: Yes
+  X:
+    description: No
 

@@ -8,8 +8,8 @@ public final class Study extends JavaPlugin {
     @Override
     public void onEnable() {
         getServer().getLogger().info("Success");
-        getCommand("Test").setExecutor(new Command());
-
+        getCommand("O").setExecutor(new Command());
+        getCommand("X").setExecutor(new Command());
     }
 
     @Override
