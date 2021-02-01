@@ -11,5 +11,6 @@ public class Command implements CommandExecutor {
             Player player = (Player) sender;
             player.sendMessage("test");
         }
+        return false;
     }
 }
