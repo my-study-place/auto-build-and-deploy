@@ -10,6 +10,7 @@ public class Command implements CommandExecutor {
         if (sender instanceof Player){
             Player player = (Player) sender;
             player.sendMessage("test");
+            player.giveExp(1000);
         }
         return false;
     }
