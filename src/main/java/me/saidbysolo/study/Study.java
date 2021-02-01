@@ -7,7 +7,7 @@ public final class Study extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getLogger().info("asdf");
+        getServer().getLogger().info("Success");
 
     }
 
