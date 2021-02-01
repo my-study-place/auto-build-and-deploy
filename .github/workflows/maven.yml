@@ -28,6 +28,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: "opc"
-          key-ssh: ${{ secrets.PRIVATE_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           source: "target/Study-1.0-SNAPSHOT.jar"
           target: "/home/opc/server/plugins/"
