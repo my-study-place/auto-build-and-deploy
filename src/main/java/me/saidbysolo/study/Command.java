@@ -1,5 +1,6 @@
 package me.saidbysolo.study;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -11,6 +12,7 @@ public class Command implements CommandExecutor {
             Player player = (Player) sender;
             if (label.equalsIgnoreCase("o")){
                 player.sendMessage("O");
+                Bukkit.broadcastMessage("Test Message!")
             }
             else if (label.equalsIgnoreCase("x")){
                 player.sendMessage("X");
