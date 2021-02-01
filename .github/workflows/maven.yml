@@ -23,12 +23,11 @@ jobs:
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-      - uses: actions/checkout@master
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.HOST }}
           username: "opc"
-          passphrase: ${{ secrets.PRIVATE_KEY }}
+          key-ssh: ${{ secrets.PRIVATE_KEY }}
           source: "target/Study-1.0-SNAPSHOT.jar"
           target: "/home/opc/server/plugins/"
