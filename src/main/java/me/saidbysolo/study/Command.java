@@ -12,7 +12,7 @@ public class Command implements CommandExecutor {
             Player player = (Player) sender;
             if (label.equalsIgnoreCase("o")){
                 player.sendMessage("O");
-                Bukkit.broadcastMessage("Test Message!")
+                Bukkit.broadcastMessage("Test Message!");
             }
             else if (label.equalsIgnoreCase("x")){
                 player.sendMessage("X");
