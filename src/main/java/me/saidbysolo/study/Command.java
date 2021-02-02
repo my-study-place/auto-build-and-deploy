@@ -12,6 +12,8 @@ import java.io.FileReader;
 public class Command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
+
+        String
         if (sender instanceof Player){
             Player player = (Player) sender;
             JSONParser parser = new JSONParser();
@@ -20,7 +22,7 @@ public class Command implements CommandExecutor {
                 player.sendMessage("O");
                 Bukkit.broadcastMessage("Test Message!");
                 try {
-                    Object obj = parser.parse(new FileReader("C:/Users/saidb/Desktop/asdf.json"));
+                    Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
                     JSONObject jsonObject = (JSONObject) obj;
 
                     String data = (String) jsonObject.get("data");
