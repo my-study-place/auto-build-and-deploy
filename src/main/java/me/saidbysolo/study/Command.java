@@ -12,8 +12,6 @@ import java.io.FileReader;
 public class Command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
-
-        String
         if (sender instanceof Player){
             Player player = (Player) sender;
             JSONParser parser = new JSONParser();
