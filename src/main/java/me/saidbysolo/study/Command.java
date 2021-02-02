@@ -28,7 +28,7 @@ public class Command implements CommandExecutor {
                     Bukkit.broadcastMessage(data);
 
                 }catch (Exception e){
-
+                    e.printStackTrace();
                 }
 
             }
