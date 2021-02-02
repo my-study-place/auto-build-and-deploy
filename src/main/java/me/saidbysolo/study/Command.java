@@ -25,7 +25,7 @@ public class Command implements CommandExecutor {
 
                     String data = (String) jsonObject.get("data");
 
-                    Bukkit.broadcastMessage(data);
+                    Bukkit.broadcastMessage(data.toString());
 
                 }catch (Exception e){
                     e.printStackTrace();
