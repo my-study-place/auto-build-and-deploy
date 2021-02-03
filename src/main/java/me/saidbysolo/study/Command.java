@@ -1,5 +1,6 @@
 package me.saidbysolo.study;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.bukkit.Bukkit;
@@ -8,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.FileReader;
+import java.util.Arrays;
 
 public class Command implements CommandExecutor {
     @Override
@@ -23,9 +25,9 @@ public class Command implements CommandExecutor {
                     Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
                     JSONObject jsonObject = (JSONObject) obj;
 
-                    String data = (String) jsonObject.get("data");
+                    JSONArray data = (JSONArray) jsonObject.get("data");
 
-                    Bukkit.broadcastMessage(data.toString());
+                    Bukkit.broadcastMessage(data.toJSONString());
 
                 }catch (Exception e){
                     e.printStackTrace();
