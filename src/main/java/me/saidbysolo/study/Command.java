@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.io.FileReader;
-import java.util.Arrays;
+import java.util.Random;
 
 public class Command implements CommandExecutor {
     @Override
@@ -17,6 +17,7 @@ public class Command implements CommandExecutor {
         if (sender instanceof Player){
             Player player = (Player) sender;
             JSONParser parser = new JSONParser();
+            Random rand = new Random();
 
             if (label.equalsIgnoreCase("o")){
                 player.sendMessage("O");
@@ -27,8 +28,9 @@ public class Command implements CommandExecutor {
 
                     JSONArray data = (JSONArray) jsonObject.get("data");
 
-                    Bukkit.broadcastMessage(data.toJSONString());
+                    JSONObject randomResult = (JSONObject) data.get(rand.nextInt(data.toArray().length));
 
+                    Bukkit.broadcastMessage(randomResult.toJSONString());
                 }catch (Exception e){
                     e.printStackTrace();
                 }
