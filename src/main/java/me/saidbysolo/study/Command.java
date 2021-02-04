@@ -35,10 +35,9 @@ public class Command implements CommandExecutor {
                 try {
                     Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
                     JSONObject jsonObject = (JSONObject) obj;
-                    JSONArray data = (JSONArray) jsonObject.get("data");
-                    JSONObject randomResult = (JSONObject) data.get(rand.nextInt(data.toArray().length));
-                    new Counter(player).runTaskTimer(this.plugin,0,20L);
-                    Bukkit.broadcastMessage(randomResult.toJSONString());
+                    JSONArray dataArray = (JSONArray) jsonObject.get("data");
+                    JSONObject randomResult = (JSONObject) dataArray.get(rand.nextInt(dataArray.toArray().length));
+                    new Counter(player, randomResult).runTaskTimer(this.plugin,0,20L);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
