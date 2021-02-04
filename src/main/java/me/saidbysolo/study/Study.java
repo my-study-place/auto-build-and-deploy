@@ -10,6 +10,7 @@ public final class Study extends JavaPlugin {
         getServer().getLogger().info("Success");
         getCommand("O").setExecutor(new Command(this));
         getCommand("X").setExecutor(new Command(this));
+        getCommand("start").setExecutor(new Command(this));
     }
 
     @Override

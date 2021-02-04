@@ -1,6 +1,5 @@
 package me.saidbysolo.study;
 
-import org.bukkit.scheduler.BukkitRunnable;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,8 +12,7 @@ import java.io.FileReader;
 import java.util.Random;
 
 public class Command implements CommandExecutor {
-    private Study plugin;
-    private Integer count = 5;
+    private final Study plugin;
     private static final JSONParser parser = new JSONParser();
     private static final Random rand = new Random();
 
@@ -39,25 +37,7 @@ public class Command implements CommandExecutor {
                     JSONObject jsonObject = (JSONObject) obj;
                     JSONArray data = (JSONArray) jsonObject.get("data");
                     JSONObject randomResult = (JSONObject) data.get(rand.nextInt(data.toArray().length));
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            switch (count){
-                                case 5:
-                                    player.sendMessage("5");
-                                    break;
-                                case 4:
-                                    player.sendMessage("4");
-                                    break;
-                                default:
-                                    break;
-                            }
-                            if(count==5){
-                                player.sendMessage("멈춤");
-                                cancel();
-                            }
-                        }
-                    }.runTaskTimer(plugin, 0, 20);
+                    new Counter(player).runTaskTimer(this.plugin,0,20L);
                     Bukkit.broadcastMessage(randomResult.toJSONString());
                 }catch (Exception e){
                     e.printStackTrace();
