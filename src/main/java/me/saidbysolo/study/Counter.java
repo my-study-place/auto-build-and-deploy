@@ -35,7 +35,7 @@ public class Counter extends BukkitRunnable {
                 break;
             case 0:
                 this.player.sendMessage(randomResult.toJSONString());
-                this.player.sendTitle("Asdf","",1,5,1);
+                this.player.sendTitle("Asdf","",10,70,20);
                 cancel();
                 break;
         }
