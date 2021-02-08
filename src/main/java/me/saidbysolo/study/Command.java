@@ -14,7 +14,7 @@ import java.util.Random;
 public class Command implements CommandExecutor {
     private final Study plugin;
     private static final JSONParser parser = new JSONParser();
-    private static final Random rand = new Random();
+    private static final Random random = new Random();
 
     public Command(Study plugin) {
         this.plugin = plugin;
@@ -36,9 +36,10 @@ public class Command implements CommandExecutor {
                     Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
                     JSONObject jsonObject = (JSONObject) obj;
                     JSONArray dataArray = (JSONArray) jsonObject.get("data");
-                    JSONObject randomResult = (JSONObject) dataArray.get(rand.nextInt(dataArray.toArray().length));
+                    JSONObject randomResult = (JSONObject) dataArray.get(random.nextInt(dataArray.toArray().length));
                     new Counter(player, randomResult).runTaskTimer(this.plugin,0,20L);
-                }catch (Exception e){
+                }
+                catch (Exception e){
                     e.printStackTrace();
                 }
             }
