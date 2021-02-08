@@ -1,5 +1,6 @@
 package me.saidbysolo.study;
 
+import com.destroystokyo.paper.Title;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.json.simple.JSONObject;
@@ -16,22 +17,27 @@ public class Counter extends BukkitRunnable {
 
     @Override
     public void run() {
-        // TODO: use switch statement
-        if (count ==5){
-            this.player.sendMessage("a");
-        }
-        else if(count==4){
-            this.player.sendMessage("as");
-        }
-        else if(count==3){
-            this.player.sendMessage("asd");
-        }
-        else if(count ==2){
-            this.player.sendMessage("asdf");
-        }
-        else if(count==1){
-            this.player.sendMessage(this.randomResult.toJSONString());
-            cancel();
+        switch (count) {
+            case 5:
+                this.player.sendMessage("a");
+                break;
+            case 4:
+                this.player.sendMessage("as");
+                break;
+            case 3:
+                this.player.sendMessage("asd");
+                break;
+            case 2:
+                this.player.sendMessage("asdf");
+                break;
+            case 1:
+                this.player.sendMessage("asdfg");
+                break;
+            case 0:
+                this.player.sendMessage(randomResult.toJSONString());
+                this.player.sendTitle(new Title("asdf"));
+                cancel();
+                break;
         }
         count--;
     }
