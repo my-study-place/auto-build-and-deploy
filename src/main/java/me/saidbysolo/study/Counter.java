@@ -1,6 +1,5 @@
 package me.saidbysolo.study;
 
-import com.destroystokyo.paper.Title;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.json.simple.JSONObject;
@@ -10,7 +9,7 @@ public class Counter extends BukkitRunnable {
     private final JSONObject randomResult;
     private int count = 5;
 
-    public Counter(Player player, JSONObject randomResult){
+    public Counter(Player player, JSONObject randomResult) {
         this.player = player;
         this.randomResult = randomResult;
     }
@@ -35,7 +34,7 @@ public class Counter extends BukkitRunnable {
                 break;
             case 0:
                 this.player.sendMessage(randomResult.toJSONString());
-                this.player.sendTitle("Asdf","",10,70,20);
+                this.player.sendTitle("Asdf", "", 10, 70, 20);
                 cancel();
                 break;
         }
