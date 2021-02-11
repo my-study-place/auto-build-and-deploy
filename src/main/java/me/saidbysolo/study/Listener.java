@@ -16,6 +16,6 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
         Player player = (Player) event.getPlayer();
-        player.sendMessage(player.getLocation().getBlock().toString());
+        player.sendMessage(player.getLocation().subtract(0, 1, 0).getBlock().toString());
     }
 }
