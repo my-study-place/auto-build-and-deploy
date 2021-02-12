@@ -22,6 +22,6 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         Player player = (Player) event.getPlayer();
-        player.sendMessage(event.getAction().toString());
+        player.sendMessage(event.getItem().toString());
     }
 }
