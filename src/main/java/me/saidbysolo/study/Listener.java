@@ -1,5 +1,6 @@
 package me.saidbysolo.study;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -22,6 +23,9 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         Player player = (Player) event.getPlayer();
-        player.sendMessage(event.getItem().toString());
+        if (event.getMaterial() == Material.AIR) {
+            player.sendMessage("asdf");
+        }
+
     }
 }
