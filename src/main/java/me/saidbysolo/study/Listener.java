@@ -26,9 +26,10 @@ public class Listener implements org.bukkit.event.Listener {
         Player player = (Player) event.getPlayer();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             player.sendMessage("right");
-            player.sendMessage(event.getMaterial().toString());
+            player.sendMessage(event.getClickedBlock().getLocation().toString());
         } else if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             player.sendMessage("left");
+            player.sendMessage(event.getClickedBlock().getLocation().toString());
             event.setCancelled(true);
         }
 
