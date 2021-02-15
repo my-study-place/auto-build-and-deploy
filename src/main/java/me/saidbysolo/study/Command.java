@@ -46,7 +46,8 @@ public class Command implements CommandExecutor {
                 Vector first = this.plugin.firstLocation.toVector();
                 Vector second = this.plugin.secondLocation.toVector();
                 Vector last = first.subtract(second);
-                BlockIterator bi = new BlockIterator(player.getWorld(), second, last, 0, 0);
+                BlockIterator bi = new BlockIterator(player.getWorld(), second, last, 0,
+                        ((Double) this.plugin.firstLocation.distance(player.getLocation())).intValue());
                 while (bi.hasNext()) {
                     Block block = bi.next();
                     player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
