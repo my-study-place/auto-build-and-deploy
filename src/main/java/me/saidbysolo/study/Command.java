@@ -9,6 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.util.BlockIterator;
+import org.bukkit.util.Vector;
 
 import java.io.FileReader;
 import java.util.Random;;
@@ -42,9 +43,10 @@ public class Command implements CommandExecutor {
                     e.printStackTrace();
                 }
             } else if (label.equalsIgnoreCase("distance")) {
-                BlockIterator bi = new BlockIterator(player.getWorld(), this.plugin.firstLocation.toVector(),
-                        this.plugin.secondLocation.toVector(), player.getLocation().getY(),
-                        ((Double) this.plugin.firstLocation.distance(player.getLocation())).intValue());
+                Vector first = this.plugin.firstLocation.toVector();
+                Vector second = this.plugin.secondLocation.toVector();
+                Vector last = first.subtract(second);
+                BlockIterator bi = new BlockIterator(player.getWorld(), second, last, 0, 0);
                 while (bi.hasNext()) {
                     Block block = bi.next();
                     player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
