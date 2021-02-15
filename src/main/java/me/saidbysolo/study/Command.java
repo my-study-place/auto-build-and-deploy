@@ -4,12 +4,14 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.util.BlockIterator;
 
 import java.io.FileReader;
-import java.util.Random;
+import java.util.Random;;
 
 public class Command implements CommandExecutor {
     private final Study plugin;
@@ -35,12 +37,19 @@ public class Command implements CommandExecutor {
                     JSONObject jsonObject = (JSONObject) obj;
                     JSONArray dataArray = (JSONArray) jsonObject.get("data");
                     JSONObject randomResult = (JSONObject) dataArray.get(random.nextInt(dataArray.toArray().length));
-                    new Counter(player, randomResult).runTaskTimer(this.plugin, 0, 20L);
+                    new Counter(player, randomResult).runTaskTimer(this.plugin, 0, 20);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else if (label.equalsIgnoreCase("distance")) {
-                player.sendMessage(Double.toString(this.plugin.firstLocation.distance(this.plugin.secondLocation)));
+                BlockIterator bi = new BlockIterator(player.getWorld(), this.plugin.firstLocation.toVector(),
+                        this.plugin.secondLocation.toVector(), player.getLocation().getY(),
+                        ((Double) this.plugin.firstLocation.distance(player.getLocation())).intValue());
+                while (bi.hasNext()) {
+                    Block block = bi.next();
+                    player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
+                            + ", " + block.getZ());
+                }
             }
         }
         return false;
