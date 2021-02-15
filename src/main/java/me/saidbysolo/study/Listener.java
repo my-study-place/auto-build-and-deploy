@@ -30,13 +30,13 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         Player player = (Player) event.getPlayer();
-        if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
-            player.sendMessage("right");
-            this.plugin.firstLocation = event.getClickedBlock().getLocation();
-        } else if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
+        if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             player.sendMessage("left");
             this.plugin.firstLocation = event.getClickedBlock().getLocation();
             event.setCancelled(true);
+        } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
+            player.sendMessage("right");
+            this.plugin.secondLocation = event.getClickedBlock().getLocation();
         }
 
     }
