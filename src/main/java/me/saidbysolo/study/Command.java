@@ -22,26 +22,25 @@ public class Command implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
-        if (sender instanceof Player){
+        if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (label.equalsIgnoreCase("o")){
+            if (label.equalsIgnoreCase("o")) {
                 player.sendMessage("O");
                 Bukkit.broadcastMessage("Test Message!");
-            }
-            else if (label.equalsIgnoreCase("x")){
+            } else if (label.equalsIgnoreCase("x")) {
                 player.sendMessage("X");
-            }
-            else if(label.equalsIgnoreCase("start")){
+            } else if (label.equalsIgnoreCase("start")) {
                 try {
                     Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
                     JSONObject jsonObject = (JSONObject) obj;
                     JSONArray dataArray = (JSONArray) jsonObject.get("data");
                     JSONObject randomResult = (JSONObject) dataArray.get(random.nextInt(dataArray.toArray().length));
-                    new Counter(player, randomResult).runTaskTimer(this.plugin,0,20L);
-                }
-                catch (Exception e){
+                    new Counter(player, randomResult).runTaskTimer(this.plugin, 0, 20L);
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (label.equalsIgnoreCase("distance")) {
+                player.sendMessage(Double.toString(this.plugin.firstLocation.distance(this.plugin.secondLocation)));
             }
         }
         return false;

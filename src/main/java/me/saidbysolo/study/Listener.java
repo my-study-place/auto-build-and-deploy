@@ -8,6 +8,12 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class Listener implements org.bukkit.event.Listener {
+    private final Study plugin;
+
+    public Listener(Study plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
@@ -26,10 +32,10 @@ public class Listener implements org.bukkit.event.Listener {
         Player player = (Player) event.getPlayer();
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             player.sendMessage("right");
-            player.sendMessage(event.getClickedBlock().getLocation().toString());
+            this.plugin.firstLocation = event.getClickedBlock().getLocation();
         } else if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             player.sendMessage("left");
-            player.sendMessage(event.getClickedBlock().getLocation().toString());
+            this.plugin.firstLocation = event.getClickedBlock().getLocation();
             event.setCancelled(true);
         }
 

@@ -8,4 +8,6 @@ commands:
     description: No
   start:
     description: start
+  distance:
+    description: distance
 
