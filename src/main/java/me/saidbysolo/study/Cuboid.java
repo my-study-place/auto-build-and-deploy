@@ -8,10 +8,10 @@ import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
 public class Cuboid {
-    public Player player;
-    public Vector firstVector;
-    public Vector secondVector;
-    public World world;
+    public final Player player;
+    public final Vector firstVector;
+    public final Vector secondVector;
+    public final World world;
 
     public Cuboid(Location firstLocation, Location secondLocation, Player player) {
         if (!firstLocation.getWorld().equals(firstLocation.getWorld())) {
@@ -25,7 +25,7 @@ public class Cuboid {
 
     public void bi() {
         Vector subVector = this.firstVector.subtract(this.secondVector);
-        BlockIterator bi = new BlockIterator(this.world, secondVector, subVector, 0, 20);
+        BlockIterator bi = new BlockIterator(this.world, this.secondVector, subVector, 0, 20);
         while (bi.hasNext()) {
             Block block = bi.next();
             this.player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
