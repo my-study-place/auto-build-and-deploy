@@ -28,8 +28,8 @@ public class Cuboid {
         BlockIterator bi = new BlockIterator(this.world, secondVector, subVector, 0, 20);
         while (bi.hasNext()) {
             Block block = bi.next();
-            player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY() + ", "
-                    + block.getZ());
+            this.player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
+                    + ", " + block.getZ());
         }
     }
 
