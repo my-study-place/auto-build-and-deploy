@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ import org.bukkit.util.BlockIterator;
 import org.bukkit.util.Vector;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Random;;
 
 public class Command implements CommandExecutor {
@@ -21,6 +23,24 @@ public class Command implements CommandExecutor {
 
     public Command(Study plugin) {
         this.plugin = plugin;
+    }
+
+    public ArrayList<Location> getBlocksInArea(Location loc1, Location loc2) {
+        int lowX = (loc1.getBlockX() < loc2.getBlockX()) ? loc1.getBlockX() : loc2.getBlockX();
+        int lowY = (loc1.getBlockY() < loc2.getBlockY()) ? loc1.getBlockY() : loc2.getBlockY();
+        int lowZ = (loc1.getBlockZ() < loc2.getBlockZ()) ? loc1.getBlockZ() : loc2.getBlockZ();
+
+        ArrayList<Location> locs = new ArrayList<Location>();
+
+        for (int x = 0; x < Math.abs(loc1.getBlockX() - loc2.getBlockX()); x++) {
+            for (int y = 0; y < Math.abs(loc1.getBlockY() - loc2.getBlockY()); y++) {
+                for (int z = 0; z < Math.abs(loc1.getBlockZ() - loc2.getBlockZ()); z++) {
+                    locs.add(new Location(loc1.getWorld(), lowX + x, lowY + y, lowZ + z));
+                }
+            }
+        }
+
+        return locs;
     }
 
     @Override
@@ -43,18 +63,10 @@ public class Command implements CommandExecutor {
                     e.printStackTrace();
                 }
             } else if (label.equalsIgnoreCase("distance")) {
-                Vector first = this.plugin.firstLocation.toVector();
-                Vector second = this.plugin.secondLocation.toVector();
-                Vector last = first.subtract(second);
-                BlockIterator bi = new BlockIterator(player.getWorld(), second, last, 0,
-                        ((Double) this.plugin.firstLocation.distance(player.getLocation())).intValue());
-                while (bi.hasNext()) {
-                    Block block = bi.next();
-                    player.sendMessage("Block found: " + block.getType() + " at: " + block.getX() + ", " + block.getY()
-                            + ", " + block.getZ());
-                }
+                player.sendMessage(getBlocksInArea(this.plugin.firstLocation, this.plugin.secondLocation).toString());
             }
         }
+
         return false;
     }
 }
