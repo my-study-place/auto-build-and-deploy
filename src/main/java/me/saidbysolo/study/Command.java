@@ -42,7 +42,7 @@ public class Command implements CommandExecutor {
                 }
             } else if (label.equalsIgnoreCase("distance")) {
                 Cuboid cuboid = new Cuboid(this.plugin.firstLocation, this.plugin.secondLocation, player);
-                cuboid.bi();
+
             }
         }
 
