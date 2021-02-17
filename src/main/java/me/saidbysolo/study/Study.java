@@ -11,7 +11,6 @@ public final class Study extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getLogger().info(config.getString("wtfisthis"));
         getServer().getLogger().info("Success");
         getServer().getPluginManager().registerEvents(new Listener(this), this);
         getCommand("setCorrectLocation").setExecutor(new Command(this));
