@@ -4,10 +4,9 @@ main: me.saidbysolo.study.Study
 commands:
   setCorrectLocation:
     description: Yes
-  setNegativetLocation:
+  setNegativeLocation:
     description: No
   start:
     description: start
   test:
     description: test
-
