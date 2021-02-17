@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -41,8 +42,9 @@ public class Command implements CommandExecutor {
                     e.printStackTrace();
                 }
             } else if (label.equalsIgnoreCase("distance")) {
-                Cuboid cuboid = new Cuboid(this.plugin.firstLocation, this.plugin.secondLocation, player);
-                cuboid.bi();
+                Cuboid cuboid = new Cuboid(this.plugin.firstLocation, this.plugin.secondLocation);
+                for (Block block : cuboid)
+                    player.sendMessage(block.toString());
             }
         }
 
