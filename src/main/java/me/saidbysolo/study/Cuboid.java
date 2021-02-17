@@ -520,6 +520,7 @@ public class Cuboid implements Iterable<Block>, Cloneable, ConfigurationSerializ
      * @param blockId - The block ID to check for
      * @return true if this Cuboid contains only blocks of the given type
      */
+    @Deprecated
     public boolean containsOnly(int blockId) {
         for (Block b : this) {
             if (b.getTypeId() != blockId)

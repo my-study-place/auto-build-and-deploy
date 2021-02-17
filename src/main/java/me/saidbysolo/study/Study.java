@@ -17,7 +17,7 @@ public final class Study extends JavaPlugin {
         getCommand("O").setExecutor(new Command(this));
         getCommand("X").setExecutor(new Command(this));
         getCommand("start").setExecutor(new Command(this));
-        getCommand("distance").setExecutor(new Command(this));
+        getCommand("test").setExecutor(new Command(this));
     }
 
     @Override

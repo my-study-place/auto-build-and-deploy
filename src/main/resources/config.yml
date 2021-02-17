@@ -1,1 +1,20 @@
-wtfisthis: idkwhatisthis
+correctLocation:
+  firstLocation:
+    X:
+    Y:
+    Z:
+  secondLocation:
+    X:
+    Y:
+    Z:
+
+negativeLocation:
+  firstLocation:
+    X:
+    Y:
+    Z:
+  secondLocation:
+    X:
+    Y:
+    Z:
+

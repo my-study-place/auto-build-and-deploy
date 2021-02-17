@@ -3,9 +3,7 @@ package me.saidbysolo.study;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -22,15 +20,32 @@ public class Command implements CommandExecutor {
         this.plugin = plugin;
     }
 
+    public void setConfig(Location firstLocation, Location secondLocation, Boolean correct) {
+        if (correct) {
+            this.plugin.config.set("correctLocation.firstLocation.X", firstLocation.getX());
+            this.plugin.config.set("correctLocation.firstLocation.Y", firstLocation.getY());
+            this.plugin.config.set("correctLocation.firstLocation.Z", firstLocation.getZ());
+            this.plugin.config.set("correctLocation.secondLocation.X", secondLocation.getX());
+            this.plugin.config.set("correctLocation.secondLocation.Y", secondLocation.getY());
+            this.plugin.config.set("correctLocation.secondLocation.Z", secondLocation.getZ());
+        } else {
+            this.plugin.config.set("negativeLocation.firstLocation.X", firstLocation.getX());
+            this.plugin.config.set("negativeLocation.firstLocation.Y", firstLocation.getY());
+            this.plugin.config.set("negativeLocation.firstLocation.Z", firstLocation.getZ());
+            this.plugin.config.set("negativeLocation.secondLocation.X", secondLocation.getX());
+            this.plugin.config.set("negativeLocation.secondLocation.Y", secondLocation.getY());
+            this.plugin.config.set("negativeLocation.secondLocation.Z", secondLocation.getZ());
+        }
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (label.equalsIgnoreCase("o")) {
-                player.sendMessage("O");
-                Bukkit.broadcastMessage("Test Message!");
-            } else if (label.equalsIgnoreCase("x")) {
-                player.sendMessage("X");
+            if (label.equalsIgnoreCase("setcorrectposition")) {
+                setConfig(this.plugin.firstLocation, this.plugin.secondLocation, true);
+            } else if (label.equalsIgnoreCase("setnegativeposition")) {
+                setConfig(this.plugin.firstLocation, this.plugin.secondLocation, false);
             } else if (label.equalsIgnoreCase("start")) {
                 try {
                     Object obj = parser.parse(new FileReader("/home/opc/asdf.json"));
@@ -41,10 +56,9 @@ public class Command implements CommandExecutor {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (label.equalsIgnoreCase("distance")) {
-                Cuboid cuboid = new Cuboid(this.plugin.firstLocation, this.plugin.secondLocation);
-                for (Block block : cuboid)
-                    player.sendMessage(block.toString());
+            } else if (label.equalsIgnoreCase("test")) {
+                player.sendMessage(this.plugin.config.get("correctLocation").toString());
+                player.sendMessage(this.plugin.config.get("negativeLocation").toString());
             }
         }
 

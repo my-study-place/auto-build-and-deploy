@@ -1,10 +1,10 @@
 package me.saidbysolo.study;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class Listener implements org.bukkit.event.Listener {
@@ -14,11 +14,11 @@ public class Listener implements org.bukkit.event.Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
-    public void onDeath(PlayerDeathEvent event) {
-        Player player = event.getEntity();
-        player.spigot().respawn();
-    }
+    // @EventHandler
+    // public void onDeath(PlayerDeathEvent event) {
+    // Player player = event.getEntity();
+    // player.spigot().respawn();
+    // }
 
     // @EventHandler
     // public void onMove(PlayerMoveEvent event) {
@@ -31,12 +31,16 @@ public class Listener implements org.bukkit.event.Listener {
     public void onInteract(PlayerInteractEvent event) {
         Player player = (Player) event.getPlayer();
         if (event.getAction() == Action.LEFT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
-            player.sendMessage("left");
-            this.plugin.firstLocation = event.getClickedBlock().getLocation();
+            Location location = event.getClickedBlock().getLocation();
+            this.plugin.firstLocation = location;
+            player.sendMessage(
+                    "첫번째 블록 선택됨:" + "X:" + location.getX() + "Y:" + location.getY() + "Z:" + location.getZ());
             event.setCancelled(true);
         } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
-            player.sendMessage("right");
-            this.plugin.secondLocation = event.getClickedBlock().getLocation();
+            Location location = event.getClickedBlock().getLocation();
+            this.plugin.secondLocation = location;
+            player.sendMessage(
+                    "두번째 블록 선택됨:" + "X:" + location.getX() + "Y:" + location.getY() + "Z:" + location.getZ());
         }
 
     }
