@@ -42,9 +42,9 @@ public class Command implements CommandExecutor {
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            if (label.equalsIgnoreCase("setcorrectposition")) {
+            if (label.equalsIgnoreCase("setCorrectLocation")) {
                 setConfig(this.plugin.firstLocation, this.plugin.secondLocation, true);
-            } else if (label.equalsIgnoreCase("setnegativeposition")) {
+            } else if (label.equalsIgnoreCase("setNegativeLocation")) {
                 setConfig(this.plugin.firstLocation, this.plugin.secondLocation, false);
             } else if (label.equalsIgnoreCase("start")) {
                 try {

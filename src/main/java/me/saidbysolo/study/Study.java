@@ -14,8 +14,8 @@ public final class Study extends JavaPlugin {
         getServer().getLogger().info(config.getString("wtfisthis"));
         getServer().getLogger().info("Success");
         getServer().getPluginManager().registerEvents(new Listener(this), this);
-        getCommand("O").setExecutor(new Command(this));
-        getCommand("X").setExecutor(new Command(this));
+        getCommand("setCorrectLocation").setExecutor(new Command(this));
+        getCommand("setNegativeLocation").setExecutor(new Command(this));
         getCommand("start").setExecutor(new Command(this));
         getCommand("test").setExecutor(new Command(this));
     }
