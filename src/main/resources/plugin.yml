@@ -2,9 +2,9 @@ name: Study
 version: ${project.version}
 main: me.saidbysolo.study.Study
 commands:
-  O:
+  setcorrectposition:
     description: Yes
-  X:
+  setnegativeposition:
     description: No
   start:
     description: start

@@ -34,13 +34,13 @@ public class Listener implements org.bukkit.event.Listener {
             Location location = event.getClickedBlock().getLocation();
             this.plugin.firstLocation = location;
             player.sendMessage(
-                    "첫번째 블록 선택됨:" + "X:" + location.getX() + "Y:" + location.getY() + "Z:" + location.getZ());
+                    "첫번째 블록 선택됨: " + "X:" + location.getX() + " Y:" + location.getY() + " Z:" + location.getZ());
             event.setCancelled(true);
         } else if (event.getAction() == Action.RIGHT_CLICK_BLOCK && event.getMaterial() == Material.INK_SACK) {
             Location location = event.getClickedBlock().getLocation();
             this.plugin.secondLocation = location;
             player.sendMessage(
-                    "두번째 블록 선택됨:" + "X:" + location.getX() + "Y:" + location.getY() + "Z:" + location.getZ());
+                    "두번째 블록 선택됨: " + "X:" + location.getX() + "Y:" + location.getY() + " Z:" + location.getZ());
         }
 
     }
