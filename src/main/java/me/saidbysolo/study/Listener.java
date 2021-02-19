@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+// 여기서 상호작용이나 탈락쪽 건드는곳
 public class Listener implements org.bukkit.event.Listener {
     private final Study plugin;
 
@@ -14,18 +15,17 @@ public class Listener implements org.bukkit.event.Listener {
         this.plugin = plugin;
     }
 
-    // @EventHandler
-    // public void onDeath(PlayerDeathEvent event) {
-    // Player player = event.getEntity();
-    // player.spigot().respawn();
-    // }
+    /*
+     * @EventHandler public void onDeath(PlayerDeathEvent event) { Player player =
+     * event.getEntity(); player.spigot().respawn(); }
+     */
 
-    // @EventHandler
-    // public void onMove(PlayerMoveEvent event) {
-    // Player player = (Player) event.getPlayer();
-    // player.sendMessage(player.getLocation().subtract(0,
-    // 1,0).getBlock().getType().toString());
-    // }
+    /*
+     * @EventHandler public void onMove(PlayerMoveEvent event) { Player player =
+     * (Player) event.getPlayer();
+     * player.sendMessage(player.getLocation().subtract(0, 1,
+     * 0).getBlock().getType().toString()); }
+     */
 
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
@@ -40,7 +40,7 @@ public class Listener implements org.bukkit.event.Listener {
             Location location = event.getClickedBlock().getLocation();
             this.plugin.secondLocation = location;
             player.sendMessage(
-                    "두번째 블록 선택됨: " + "X:" + location.getX() + "Y:" + location.getY() + " Z:" + location.getZ());
+                    "두번째 블록 선택됨: " + "X:" + location.getX() + " Y:" + location.getY() + " Z:" + location.getZ());
         }
 
     }

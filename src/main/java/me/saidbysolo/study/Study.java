@@ -1,17 +1,21 @@
 package me.saidbysolo.study;
 
+import java.util.ArrayList;
+
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Study extends JavaPlugin {
     FileConfiguration config = getConfig();
+    public final Utils utils = new Utils(this);
     public Location firstLocation;
     public Location secondLocation;
+    public ArrayList<Player> playerList;
 
     @Override
     public void onEnable() {
-        getServer().getLogger().info("Success");
         getServer().getPluginManager().registerEvents(new Listener(this), this);
         getCommand("setCorrectLocation").setExecutor(new Command(this));
         getCommand("setNegativeLocation").setExecutor(new Command(this));
