@@ -33,7 +33,7 @@ public class Counter extends BukkitRunnable {
                 this.player.sendMessage("게임 시작 1초전");
                 break;
             case 0:
-                new Game().runTaskTimer(this.plugin, 0, 20);
+                new Start().runTaskTimer(this.plugin, 0, 20);
                 cancel();
                 break;
         }

@@ -10,3 +10,8 @@ commands:
     description: start
   test:
     description: test
+  join:
+    description: join
+  exit:
+    description: exit
+  
