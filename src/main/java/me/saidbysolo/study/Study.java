@@ -14,7 +14,7 @@ public final class Study extends JavaPlugin {
 
     public Location firstLocation;
     public Location secondLocation;
-    public ArrayList<Player> playerList;
+    public ArrayList<Player> playerList = new ArrayList<Player>();
 
     @Override
     public void onEnable() {
