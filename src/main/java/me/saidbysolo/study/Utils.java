@@ -1,8 +1,10 @@
 package me.saidbysolo.study;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.json.simple.JSONArray;
@@ -49,6 +51,14 @@ public class Utils {
             e.printStackTrace();
         }
         return null;
+
+    }
+
+    // 메세지 보내기
+    public void allSendMessage(ArrayList<Player> playerList, String msg) {
+        for (Player player : playerList) {
+            player.sendMessage(msg);
+        }
 
     }
 
