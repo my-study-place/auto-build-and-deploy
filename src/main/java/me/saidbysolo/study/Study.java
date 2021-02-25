@@ -26,6 +26,7 @@ public final class Study extends JavaPlugin {
         getCommand("test").setExecutor(new Command(this));
         getCommand("join").setExecutor(new Command(this));
         getCommand("exit").setExecutor(new Command(this));
+        new Game(this).runTaskTimer(this, 5, 20);
     }
 
     @Override

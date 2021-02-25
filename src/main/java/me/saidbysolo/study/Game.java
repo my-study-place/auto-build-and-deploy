@@ -1,5 +1,7 @@
 package me.saidbysolo.study;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 // 게임 메인 태스크
@@ -14,7 +16,11 @@ public class Game extends BukkitRunnable {
     public void run() {
         switch (this.plugin.state) {
             case WAITING:
-                return;
+                if (!(this.plugin.playerList.size() == 2)) {
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        player.sendMessage("asdf");
+                    }
+                }
             case STARTING:
                 return;
         }
