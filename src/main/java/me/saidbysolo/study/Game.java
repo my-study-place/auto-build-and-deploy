@@ -18,10 +18,11 @@ public class Game extends BukkitRunnable {
         switch (this.plugin.state) {
             case WAITING:
                 if (this.plugin.playerList.size() == 2) {
-                    new Counter(this.plugin).runTaskLater(this.plugin, 20);
+                    System.out.println(this.plugin.playerList.size());
+                    new Counter(this.plugin).runTaskTimer(this.plugin, 0, 20);
                     timeCount = 0;
                 } else {
-                    if (timeCount == 5) {
+                    if (timeCount == 10) {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                             player.sendMessage("asdf");
                         }
