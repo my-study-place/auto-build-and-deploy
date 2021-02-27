@@ -26,8 +26,10 @@ public class Command implements CommandExecutor {
             } else if (label.equalsIgnoreCase("join")) {
                 if (this.plugin.playerList.contains(player)) {
                     player.sendMessage("이미 참여하고계세요");
+
+                } else {
+                    this.plugin.playerList.add(player);
                 }
-                this.plugin.playerList.add(player);
             } else if (label.equalsIgnoreCase("exit")) {
                 if (this.plugin.playerList.contains(player)) {
                     this.plugin.playerList.remove(player);
