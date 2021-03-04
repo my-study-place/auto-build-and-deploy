@@ -1,10 +1,10 @@
 package me.saidbysolo.study;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Study extends JavaPlugin {
@@ -14,7 +14,7 @@ public final class Study extends JavaPlugin {
 
     public Location firstLocation;
     public Location secondLocation;
-    public ArrayList<Player> playerList = new ArrayList<Player>();
+    public ArrayList<UUID> playerUUIDList = new ArrayList<UUID>();
 
     @Override
     public void onEnable() {
