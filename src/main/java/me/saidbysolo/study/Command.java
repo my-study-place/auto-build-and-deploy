@@ -22,17 +22,17 @@ public class Command implements CommandExecutor {
             } else if (label.equalsIgnoreCase("test")) {
                 player.sendMessage(this.plugin.config.get("correctLocation").toString());
                 player.sendMessage(this.plugin.config.get("negativeLocation").toString());
-                player.sendMessage(this.plugin.playerList.toString());
+                player.sendMessage(this.plugin.playerUUIDList.toString());
             } else if (label.equalsIgnoreCase("join")) {
-                if (this.plugin.playerList.contains(player)) {
+                if (this.plugin.playerUUIDList.contains(player.getUniqueId())) {
                     player.sendMessage("이미 참여하고계세요");
 
                 } else {
-                    this.plugin.playerList.add(player);
+                    this.plugin.playerUUIDList.add(player.getUniqueId());
                 }
             } else if (label.equalsIgnoreCase("exit")) {
-                if (this.plugin.playerList.contains(player)) {
-                    this.plugin.playerList.remove(player);
+                if (this.plugin.playerUUIDList.contains(player.getUniqueId())) {
+                    this.plugin.playerUUIDList.remove(player.getUniqueId());
                 } else {
                     player.sendMessage("참여하고 있지 않으세요.");
                 }

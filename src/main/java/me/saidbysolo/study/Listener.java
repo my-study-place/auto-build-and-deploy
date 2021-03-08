@@ -49,8 +49,8 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onExit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
-        if (this.plugin.playerList.contains(player)) {
-            this.plugin.playerList.remove(player);
+        if (this.plugin.playerUUIDList.contains(player.getUniqueId())) {
+            this.plugin.playerUUIDList.remove(player.getUniqueId());
         }
     }
 }
