@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 // 여기서 상호작용이나 탈락쪽 건드는곳
@@ -21,12 +22,13 @@ public class Listener implements org.bukkit.event.Listener {
      * event.getEntity(); player.spigot().respawn(); }
      */
 
-    /*
-     * @EventHandler public void onMove(PlayerMoveEvent event) { Player player =
-     * (Player) event.getPlayer();
-     * player.sendMessage(player.getLocation().subtract(0, 1,
-     * 0).getBlock().getType().toString()); }
-     */
+    @EventHandler
+    public void onMove(PlayerMoveEvent event) {
+        Player player = (Player) event.getPlayer();
+        if (player.getLocation().subtract(0, 1, 0).getBlock().getType() == Material.OBSIDIAN) {
+            player.sendMessage("탈락");
+        }
+    }
 
     // 블록 지정
     @EventHandler
