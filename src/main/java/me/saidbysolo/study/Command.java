@@ -28,8 +28,8 @@ public class Command implements CommandExecutor {
                     player.sendMessage("이미 참여하고계세요");
 
                 } else {
-                    player.sendMessage("성공적으로 참여했어요.");
                     this.plugin.playerUUIDList.add(player.getUniqueId());
+                    player.sendMessage("성공적으로 참여했어요.");
                 }
             } else if (label.equalsIgnoreCase("exit")) {
                 if (this.plugin.playerUUIDList.contains(player.getUniqueId())) {
