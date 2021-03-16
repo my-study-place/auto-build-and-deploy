@@ -1,5 +1,6 @@
 package me.saidbysolo.study;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -51,6 +52,10 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void onExit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.sendMessage("X:" + player.getLocation().getX() + " Y:" + player.getLocation().getY() + " Z:"
+                    + player.getLocation().getZ());
+        }
         if (this.plugin.playerUUIDList.contains(player.getUniqueId())) {
             this.plugin.playerUUIDList.remove(player.getUniqueId());
         }
